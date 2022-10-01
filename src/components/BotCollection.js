@@ -11,7 +11,7 @@ function BotCollection({ bots, onAddBot }) {
         {/* Collection of all bots  */}
 
         {bots.map((bot) => {
-          return <BotCard key={bot.id} bot={bot} onAddBot={onAddBot} />;
+          return <BotCard key={bot.id} bot={bot} onClick={onAddBot} />;
         })}
       </div>
     </div>

@@ -24,9 +24,22 @@ function BotsPage() {
     }
   }
 
+  function onRemoveFromArmy(bot) {
+    const newBots = listedBots.filter((listedBot) => {
+      if (listedBot.id === bot.id) {
+        return false;
+      }
+      return true;
+    });
+    setListedBots(newBots);
+  }
+
   return (
     <div>
-      <YourBotArmy listedBots={listedBots} />
+      <YourBotArmy
+        listedBots={listedBots}
+        onRemoveFromArmy={onRemoveFromArmy}
+      />
       <BotCollection bots={bots} onAddBot={onAddBot} />
     </div>
   );

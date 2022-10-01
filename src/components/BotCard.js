@@ -10,7 +10,7 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-function BotCard({ bot, onAddBot }) {
+function BotCard({ bot, onClick }) {
   // function handleDeleteClick() {
   //   fetch(`http://localhost:8002/bots/${bot.id}`, {
   //     method: "DELETE",
@@ -20,7 +20,8 @@ function BotCard({ bot, onAddBot }) {
   // }
 
   function handleClick() {
-    onAddBot(bot);
+    // onAddBot(bot);
+    onClick(bot);
   }
 
   // setListedBots(bot);
