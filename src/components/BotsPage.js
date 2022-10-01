@@ -25,13 +25,39 @@ function BotsPage() {
   }
 
   function onRemoveFromArmy(bot) {
-    const newBots = listedBots.filter((listedBot) => {
-      if (listedBot.id === bot.id) {
-        return false;
-      }
-      return true;
-    });
-    setListedBots(newBots);
+    setListedBots(
+      listedBots.filter((listedBot) => {
+        if (listedBot.id === bot.id) {
+          return false;
+        }
+        return true;
+      })
+    );
+  }
+
+  function onDelete(bot) {
+    fetch(`http://localhost:8002/bots/${bot.id}`, {
+      method: "DELETE",
+    })
+      .then((r) => r.json())
+      .then(() => {
+        setBots(
+          bots.filter((el) => {
+            if (el.id !== bot.id) {
+              return true;
+            }
+            return false;
+          })
+        );
+        setListedBots(
+          listedBots.filter((el) => {
+            if (el.id !== bot.id) {
+              return true;
+            }
+            return false;
+          })
+        );
+      });
   }
 
   return (
@@ -39,8 +65,9 @@ function BotsPage() {
       <YourBotArmy
         listedBots={listedBots}
         onRemoveFromArmy={onRemoveFromArmy}
+        onDelete={onDelete}
       />
-      <BotCollection bots={bots} onAddBot={onAddBot} />
+      <BotCollection bots={bots} onAddBot={onAddBot} onDelete={onDelete} />
     </div>
   );
 }
