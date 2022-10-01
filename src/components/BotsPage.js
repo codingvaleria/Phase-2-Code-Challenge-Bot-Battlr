@@ -7,17 +7,27 @@ function BotsPage() {
   const [bots, setBots] = useState([]);
   const [listedBots, setListedBots] = useState([]);
 
-  //Fetch Bots
+  // Fetch Bots
   useEffect(() => {
     fetch("http://localhost:8002/bots")
       .then((r) => r.json())
       .then((bots) => setBots(bots));
   }, []);
 
+  // Add bot to listed bots (army)
+  function onAddBot(bot) {
+    const foundBot = listedBots.find((listedBot) => {
+      return listedBot.id === bot.id;
+    });
+    if (!foundBot) {
+      setListedBots([...listedBots, bot]);
+    }
+  }
+
   return (
     <div>
       <YourBotArmy listedBots={listedBots} />
-      <BotCollection bots={bots} />
+      <BotCollection bots={bots} onAddBot={onAddBot} />
     </div>
   );
 }

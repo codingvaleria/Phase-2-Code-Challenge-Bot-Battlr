@@ -1,4 +1,5 @@
 import React from "react";
+import BotsPage from "./BotsPage";
 
 const botTypeClasses = {
   Assault: "icon military",
@@ -9,7 +10,7 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-function BotCard({ bot }) {
+function BotCard({ bot, onAddBot }) {
   // function handleDeleteClick() {
   //   fetch(`http://localhost:8002/bots/${bot.id}`, {
   //     method: "DELETE",
@@ -19,7 +20,7 @@ function BotCard({ bot }) {
   // }
 
   function handleClick() {
-    console.log("hi" + bot.id);
+    onAddBot(bot);
   }
 
   // setListedBots(bot);

@@ -1,7 +1,7 @@
 import React from "react";
 import BotCard from "./BotCard";
 
-function BotCollection({ bots }) {
+function BotCollection({ bots, onAddBot }) {
   // Your code here
 
   return (
@@ -11,7 +11,7 @@ function BotCollection({ bots }) {
         {/* Collection of all bots  */}
 
         {bots.map((bot) => {
-          return <BotCard key={bot.id} bot={bot} />;
+          return <BotCard key={bot.id} bot={bot} onAddBot={onAddBot} />;
         })}
       </div>
     </div>
