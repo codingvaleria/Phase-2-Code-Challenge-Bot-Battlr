@@ -10,13 +10,23 @@ const botTypeClasses = {
 };
 
 function BotCard({ bot }) {
+  // function handleDeleteClick() {
+  //   fetch(`http://localhost:8002/bots/${bot.id}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then((r) => r.json())
+  //     .then(() => console.log("deleted"));
+  // }
+
+  function handleClick() {
+    console.log("hi" + bot.id);
+  }
+
+  // setListedBots(bot);
+
   return (
     <div className="ui column">
-      <div
-        className="ui card"
-        key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
-      >
+      <div className="ui card" key={bot.id} onClick={handleClick}>
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
         </div>
@@ -47,9 +57,10 @@ function BotCard({ bot }) {
             <div className="ui center aligned segment basic">
               <button
                 className="ui mini red button"
-                onClick={() =>
-                  console.log("add code to connect event listener")
-                }
+                // onClick={() =>
+                //   console.log("add code to connect event listener")
+                // }
+                // onClick={handleDeleteClick}
               >
                 x
               </button>
